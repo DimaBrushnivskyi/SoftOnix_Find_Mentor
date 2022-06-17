@@ -13,7 +13,7 @@
       v-if="link"
       :to="to"
       :class="mode"
-      class="text-none py-3 px-6 font-inherit bg-sky-400 border rounded-xl border-solid border-sky-400 text-white cursor-pointer mr-2 inline-block hover:bg-sky-600 hover:border-sky-600 active:bg-sky-600"
+      class="text-none py-3 px-6 font-inherit bg-sky-400 border rounded-xl border-solid border-sky-400 cursor-pointer mr-2 inline-block hover:bg-sky-600 hover:border-sky-600 active:bg-sky-600"
     >
       <slot></slot>
     </router-link>
@@ -48,7 +48,7 @@ export default {
 <style scoped>
 .flat {
   background-color: rgb(56 189 248);
-  color: rgb(56 189 248);
+  color: white;
   border: none;
 }
 

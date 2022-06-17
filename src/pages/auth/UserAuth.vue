@@ -1,5 +1,7 @@
 <template>
+  <!-- <dialog v-if="error">Warning</dialog> -->
   <base-card>
+    <dialog v-if="error">Warning</dialog>
     <el-form
       @submit.prevent="onSubmit"
       class="m-4 p-4 border border-slate-300 rounded-xl"
@@ -21,13 +23,12 @@
       <p v-if="!formIsValid">
         Please use valid email and password must be at least 8 characters long
       </p>
-      <base-button type="submit">{{ submitButtonText }}</base-button>
-      <!-- For some reason event doesn`t work on The BaseButton, had to wrap in span -->
-      <!-- <span @click="switchAuthMode"> -->
+      <base-button type="submit">
+        {{ submitButtonText }}
+      </base-button>
       <base-button type="button" mode="flat" @click.prevent="switchAuthMode">
         {{ switchModeButtonText }}
       </base-button>
-      <!-- </span> -->
     </el-form>
   </base-card>
 </template>
@@ -40,6 +41,7 @@ export default {
       password: "",
       formIsValid: true,
       mode: "login",
+      error: false,
     };
   },
   computed: {
@@ -84,12 +86,13 @@ export default {
             password: this.password,
           });
         }
-        // this.$router.push("/mentors");
+        this.$router.replace("/mentors");
       } catch (error) {
-        console.warn(error);
+        this.error = error;
+        alert("User with such email already exists");
+        this.$router.replace("/auth");
+        console.warn(error, "User with such email already exists");
       }
-
-      this.$router.replace("/mentors");
     },
     switchAuthMode() {
       if (this.mode === "login") {

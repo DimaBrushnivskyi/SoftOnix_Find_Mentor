@@ -32,11 +32,6 @@ export default {
       return this.$store.getters["requests/requests"];
     },
     hasRequests() {
-      console.log(
-        "requests from Vuex store",
-        this.$store.getters["requests/hasRequests"]
-      );
-
       return this.$store.getters["requests/hasRequests"];
     },
   },

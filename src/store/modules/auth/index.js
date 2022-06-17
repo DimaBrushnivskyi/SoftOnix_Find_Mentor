@@ -25,9 +25,6 @@ export default {
     setUser(state, payload) {
       state.token = payload.token;
       state.userId = payload.userId;
-      // state.tokenExpiration = payload.tokenExpiration;
-
-      console.log("auth state", state);
     },
   },
   actions: {
@@ -62,18 +59,8 @@ export default {
       const data = await responce.data;
 
       if (responce.status !== 200) {
-        console.log(
-          "error responce auth",
-          data,
-          "responce.status: ",
-          responce.status,
-          "responce.statusText: ",
-          responce.statusText
-        );
         throw new Error("Error status: ", responce.status);
       }
-
-      console.log("data", data);
 
       const timeLimit = +data.expiresIn * 1000;
       const sessionLimit = new Date().getTime() + timeLimit;
@@ -89,10 +76,7 @@ export default {
       context.commit("setUser", {
         token: data.idToken,
         userId: data.localId,
-        // tokenExpiration: sessionLimit,
       });
-
-      console.log("tokenId", data.idToken, this.$store.token);
     },
     autoLogin(context) {
       const token = localStorage.getItem("token");
@@ -112,7 +96,6 @@ export default {
         context.commit("setUser", {
           token,
           userId,
-          // tokenExpiration: null,
         });
       }
     },
@@ -126,7 +109,6 @@ export default {
       context.commit("setUser", {
         token: null,
         userId: null,
-        // tokenExpiration: null,
       });
     },
   },

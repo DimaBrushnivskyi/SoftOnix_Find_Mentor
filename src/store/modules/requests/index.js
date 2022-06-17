@@ -45,7 +45,6 @@ export default {
         `https://find-a-mentor-8432a-default-rtdb.firebaseio.com/requests/${mentorId}.json?auth=${token}`
       );
       const data = responce.data;
-      console.log("responce data of requests", data);
 
       if (responce.status !== 200 || responce.statusText !== "OK") {
         throw new Error("Error status: ", responce.status);

@@ -8,15 +8,10 @@
         <div @click="loadMentors">
           <base-button mode="outline">Refresh</base-button>
         </div>
-        <!-- <div>
-          <base-button link to="/auth" v-if="!isLoggedIn"
-            >Login as a Mentor</base-button
-          >
-        </div> -->
         <div
           class="underline decoration-white text-white flex justify-center items-center"
         >
-          <base-button v-if="!isMentor && !isLoggedIn" link to="/register">
+          <base-button v-if="!isMentor && isLoggedIn" link to="/register">
             Become a Mentor
           </base-button>
         </div>
@@ -31,6 +26,8 @@
           :first-name="mentor.firstName"
           :last-name="mentor.lastName"
           :rate="mentor.hourlyRate"
+          :isLoggedIn="isLoggedIn"
+          :mentor="mentor"
         ></mentor-item>
       </ul>
       <p v-else>
@@ -90,8 +87,6 @@ export default {
         return false;
       });
 
-      console.log("mentors", mentors);
-
       return filteredMentorsList;
     },
     areMentors() {
@@ -107,7 +102,6 @@ export default {
     },
     loadMentors() {
       this.$store.dispatch("mentors/loadMentors");
-      console.log("refresh mentors list from FireBase");
     },
   },
 };

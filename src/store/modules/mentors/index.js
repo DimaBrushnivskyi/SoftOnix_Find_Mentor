@@ -47,8 +47,6 @@ export default {
   mutations: {
     registerMentor(state, payload) {
       state.mentors.push(payload);
-
-      console.log("new mentor", state.mentors);
     },
     setMentors(state, payload) {
       state.mentors = payload;
@@ -57,7 +55,6 @@ export default {
   actions: {
     async registerMentor(context, data) {
       const userId = context.rootGetters.userId;
-      console.log("rootGetters: ", this.$store);
 
       const mentorData = {
         firstName: data.first,
@@ -68,7 +65,6 @@ export default {
       };
 
       const token = context.rootGetters.token;
-      // const fireBaseSecretKey = "KMJr4IclG9ieCoJO4HAwO6pxJ6y09u7QiZIeNTu2";
       const responce = await axios.put(
         `https://find-a-mentor-8432a-default-rtdb.firebaseio.com/mentors/${userId}.json?auth=${token}`,
         {
@@ -99,7 +95,6 @@ export default {
       );
 
       const result = await responce.data;
-      console.log("FireBase list of mentors", result);
 
       const mentorsFromServer = [];
 
@@ -115,8 +110,6 @@ export default {
 
         mentorsFromServer.push(mentor);
       }
-
-      console.log("MentorsFromServer: ", mentorsFromServer);
 
       context.commit("setMentors", mentorsFromServer);
     },
