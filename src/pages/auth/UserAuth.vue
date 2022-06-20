@@ -91,7 +91,6 @@ export default {
         this.error = error;
         alert("User with such email already exists");
         this.$router.replace("/auth");
-        console.warn(error, "User with such email already exists");
       }
     },
     switchAuthMode() {
