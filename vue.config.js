@@ -8,8 +8,7 @@ module.exports = defineConfig({
       require("unplugin-vue-components/webpack")({}),
     ],
   },
-  publicPath:
-    process.env.NODE_ENV === "production" ? "/SoftOnix_Find_Mentor/#/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/mentors/" : "/",
   // compilerOptions: {
   //   isCustomElement: (tag) => !["request-item"].includes(tag),
   // },
