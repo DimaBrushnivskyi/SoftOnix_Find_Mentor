@@ -19,6 +19,17 @@ const routes = [
     component: MentorsList,
   },
   {
+    path: "/SoftOnix_Find_Mentor/",
+    name: "MentorsList",
+    component: MentorsList,
+  },
+  {
+    path: "/SoftOnix_Find_Mentor/:queryParams(.*)",
+    name: "MentorsList",
+    component: MentorsList,
+    props: true,
+  },
+  {
     path: "/mentors/:id",
     component: MentorDetails,
     props: true,

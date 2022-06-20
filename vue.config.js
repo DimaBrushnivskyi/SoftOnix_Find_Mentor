@@ -9,7 +9,7 @@ module.exports = defineConfig({
     ],
   },
   publicPath:
-    process.env.NODE_ENV === "production" ? "/SoftOnix_Find_Mentor/" : "/",
+    process.env.NODE_ENV === "production" ? "/SoftOnix_Find_Mentor/#/" : "/",
   // compilerOptions: {
   //   isCustomElement: (tag) => !["request-item"].includes(tag),
   // },
